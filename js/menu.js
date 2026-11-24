@@ -94,7 +94,7 @@
         overlay('PAUSE', '', [
           ['Lanjut', () => Game.act('pause')],
           ['Ulangi', () => { hideOverlay(); Game.act('reset'); }],
-          ['Pilih Level', toLevels], ['Beranda', toHome]
+          , ['Beranda', toHome]
         ]);
       },
       onWin: n => {

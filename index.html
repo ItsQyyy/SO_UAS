@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Escape Deadlock</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&family=Rajdhani:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+
+  <!-- ===== LATAR BELAKANG BERANDA ===== -->
+  <div class="scene">
+    <canvas id="stars"></canvas>
+    <div class="moon"></div>
+    <div class="hill h1"></div>
+    <div class="tower"></div>
+    <div class="obs">
+      <div class="dome"></div>
+      <div class="scope"></div>
+      <div class="body"></div>
+      <div class="win w1"></div>
+      <div class="win w2"></div>
+      <div class="door"></div>
+    </div>
+    <div class="ruins"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+    <div class="hill h2"></div>
+    <div class="hill h3"></div>
+    <div class="fog"></div>
+    <div id="chars"><canvas id="c1"></canvas><canvas id="c2"></canvas></div>
+    <div class="lantern"></div>
+  </div>
+
+  <!-- ===== LAYAR 1: BERANDA ===== -->
+  <main id="screen-menu" class="screen">
+    <h1 class="title">
+      <div class="t1">ESCAPE</div>
+      <div class="t2">DEADLOCK</div>
+    </h1>
+    <div class="sub">SIMULASI PUZZLE &amp; STRATEGI</div>
+
+    <section class="panel">
+      <div class="ph">
+        <span>PILIH KARAKTER</span>
+        <span class="arrows">
+          <button id="prev" aria-label="Sebelumnya">&lt;</button>
+          <button id="next" aria-label="Berikutnya">&gt;</button>
+        </span>
+      </div>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <nav class="menu" id="menu">
+      <button data-a="start">MULAI GAME</button>
+      <button data-a="level">PILIH LEVEL</button>
+      <button data-a="set">PENGATURAN</button>
+      <button data-a="exit">KELUAR</button>
+    </nav>
+
+    <div class="hint">Tekan <kbd>[A]</kbd>/<kbd>[D]</kbd> untuk Pilih Karakter • <kbd>[ENTER]</kbd> untuk Mulai</div>
+    <div class="ver">v1.2.0</div>
+  </main>
+
+  <!-- ===== LAYAR 2: PILIH LEVEL ===== -->
+  <main id="screen-levels" class="screen hidden">
+    <h1 class="title">
+      <div class="t1">PILIH LEVEL</div>
+    </h1>
+    <section class="panel lv-panel">
+      <div id="level-list"></div>
+    </section>
+    <nav class="menu"><button id="lv-back" class="on">KEMBALI</button></nav>
+  </main>
+
+  <!-- ===== LAYAR 3: GAMEPLAY ===== -->
+  <section id="screen-game" class="hidden">
+    <header class="gtop">
+      <div id="banner" class="banner info"></div>
+      <button id="btn-menu" class="btn-sm">Esc Menu</button>
+    </header>
+    <div class="gwrap"><canvas id="game" width="768" height="528"></canvas></div>
+    <footer class="gbar"><span id="gbar-text"></span><span id="dash" class="dash"></span></footer>
+    <div id="overlay" class="overlay hidden">
+      <div class="box">
+        <h2 id="ov-title"></h2>
+        <p id="ov-text"></p>
+        <div id="ov-btns"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="toast"></div>
+
+  <script src="js/characters.js"></script>
+  <script src="js/levels/level1.js"></script>
+  <script src="js/levels/level2.js"></script>
+  <script src="js/levels/level3.js"></script>
+  <script src="js/levels/level4.js"></script>
+  <script src="js/levels/level5.js"></script>
+  <script src="js/levels/level6.js"></script>
+  <script src="js/levels/level7.js"></script>
+  <script src="js/levels/level8.js"></script>
+  <script src="js/levels/level9.js"></script>
+  <script src="js/levels/level10.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+
+</html>

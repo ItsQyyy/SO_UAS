@@ -1,0 +1,83 @@
+:root{
+  --cyan:#7fe9ff;--edge:#2f7fa3;--panel:#14304a;--panel2:#0f2238;--gold:#e8b04a;
+  --text:#e6f6ff;--muted:#8fb0c4;--sky1:#0b1430;--sky2:#2a2f55;
+  --hill1:#16314a;--hill2:#0f2a2a;--hill3:#0a1c1c;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--sky1);color:var(--text);font-family:'Rajdhani',system-ui,sans-serif;overflow:hidden}
+.hidden{display:none!important}
+
+/* ===== Latar belakang ===== */
+.scene{position:fixed;inset:0;background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 62%,#3b3a5c 100%)}
+#stars{position:absolute;inset:0;width:100%;height:100%}
+.moon{position:absolute;right:9%;top:13%;width:clamp(36px,5vw,70px);aspect-ratio:1;border-radius:50%;box-shadow:-10px 5px 0 0 #dff2ff;transform:rotate(-12deg)}
+.hill{position:absolute;left:0;right:0;bottom:0}
+.h1{height:38%;background:var(--hill1);clip-path:polygon(0 60%,18% 35%,38% 55%,60% 25%,80% 50%,100% 30%,100% 100%,0 100%)}
+.h2{height:26%;background:var(--hill2);clip-path:polygon(0 40%,25% 60%,50% 30%,75% 55%,100% 35%,100% 100%,0 100%)}
+.h3{height:14%;background:var(--hill3);clip-path:polygon(0 50%,30% 20%,60% 60%,100% 15%,100% 100%,0 100%)}
+.fog{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(0deg,#9fb8c455,transparent)}
+.obs{position:absolute;left:3%;bottom:16%;width:clamp(110px,22vw,330px);aspect-ratio:1.1}
+.obs .dome{position:absolute;left:12%;top:0;width:60%;height:42%;background:#6f7d8c;border-radius:90% 90% 0 0;border:3px solid #3d4a58}
+.obs .scope{position:absolute;left:52%;top:6%;width:30%;height:12%;background:#8a97a6;border:3px solid #3d4a58;transform:rotate(-28deg)}
+.obs .body{position:absolute;left:0;top:42%;width:92%;height:58%;background:#8a7a5c;border:3px solid #4a3f2c}
+.obs .win{position:absolute;top:22%;width:26%;height:30%;background:#ffd36b;box-shadow:0 0 18px #ffb84a;border:3px solid #6a4f22}
+.obs .w1{left:10%}
+.obs .w2{left:50%}
+.obs .door{position:absolute;left:14%;bottom:0;width:20%;height:46%;background:#7a4a24;border:3px solid #3d2410}
+.ruins{position:absolute;right:6%;bottom:17%;width:clamp(90px,20vw,300px);height:clamp(70px,16vw,230px)}
+.ruins i{position:absolute;bottom:0;background:#4c5a52;border:3px solid #2c3a34}
+.ruins .a{left:0;width:22%;height:100%}
+.ruins .b{right:10%;width:22%;height:80%}
+.ruins .c{left:0;width:78%;height:20%;top:0;background:#56665c}
+.tower{position:absolute;right:1.5%;bottom:30%;width:clamp(16px,3vw,40px);height:34%;background:#14365a;border:2px solid #3fd0ff;box-shadow:0 0 14px #3fd0ff55;clip-path:polygon(30% 0,70% 0,100% 100%,0 100%)}
+#chars{position:absolute;left:8%;bottom:4%;display:flex;gap:2%;align-items:flex-end}
+#chars canvas{image-rendering:pixelated;filter:drop-shadow(0 4px 0 #0006)}
+.lantern{position:absolute;left:26%;bottom:6%;width:22px;height:30px;background:#ffd36b;border:3px solid #5a3d12;box-shadow:0 0 30px 10px #ffb84a77;border-radius:4px}
+
+/* ===== Layar beranda / pilih level ===== */
+.screen{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(6px,1.6vh,16px);padding:8px}
+.title{font-family:'Silkscreen','Courier New',monospace;font-weight:700;text-align:center;line-height:.95;color:#aeefff;text-shadow:0 4px 0 #1f7fa8,0 0 24px #3fd0ff;letter-spacing:2px}
+.title .t1{font-size:clamp(30px,6.5vw,70px)}
+.title .t2{font-size:clamp(40px,9vw,100px)}
+.sub{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:clamp(12px,2vw,22px);letter-spacing:1px}
+.sub:before,.sub:after{content:"";width:clamp(24px,5vw,70px);height:3px;background:var(--gold)}
+
+.panel{width:min(94vw,430px);background:linear-gradient(var(--panel),var(--panel2));border:3px solid var(--edge);border-radius:8px;padding:8px 10px 10px;box-shadow:0 0 0 2px #0a1626,0 8px 30px #0008}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:clamp(14px,2vw,20px);font-weight:700;letter-spacing:1px;padding-left:30%}
+.arrows{display:flex;gap:6px}
+.arrows button{width:28px;height:28px;background:var(--panel2);border:2px solid var(--edge);color:var(--text);border-radius:4px;cursor:pointer;font-weight:700}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#0e2236;border:3px solid #28506b;border-radius:6px;padding:6px 4px;text-align:center;cursor:pointer;transition:.15s}
+.card.sel{border-color:var(--cyan);box-shadow:0 0 14px #3fd0ff88,inset 0 0 12px #3fd0ff33}
+.card small{display:block;color:var(--muted);font-size:11px}
+.card b{display:block;font-size:17px}
+.card .r{font-size:12px;letter-spacing:1px}
+.card canvas{image-rendering:pixelated;display:block;margin:4px auto}
+
+.menu{width:min(78vw,290px);display:flex;flex-direction:column;gap:7px}
+.menu button{font:700 clamp(15px,2.2vw,21px) 'Rajdhani',sans-serif;letter-spacing:1px;color:var(--text);padding:8px;background:linear-gradient(var(--panel),var(--panel2));border:3px solid #2a5878;border-radius:6px;cursor:pointer;transition:.12s}
+.menu button:hover,.menu button.on{border-color:var(--cyan);box-shadow:0 0 14px #3fd0ff88;background:linear-gradient(#1c4a6a,#143550)}
+.menu button.on:before{content:"▶ "}
+
+.hint{font-size:clamp(11px,1.8vw,17px);text-align:center;text-shadow:0 2px 4px #000}
+.hint kbd{font:inherit;font-weight:700;color:var(--cyan)}
+.ver{font-size:13px;color:var(--muted);text-align:center}
+
+/* Daftar level */
+.lv-panel{padding:10px;width:min(94vw,560px)}
+#level-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:520px){#level-list{grid-template-columns:1fr}}
+.lv-card{font-family:'Rajdhani',sans-serif;text-align:left;color:var(--text);background:#0e2236;border:3px solid #28506b;border-radius:6px;padding:8px 12px;cursor:pointer;transition:.15s}
+.lv-card:hover{border-color:var(--cyan);box-shadow:0 0 14px #3fd0ff88}
+.lv-card .lv-n{display:block;font-size:12px;letter-spacing:2px;color:var(--gold)}
+.lv-card b{display:block;font-size:20px}
+.lv-card small{color:var(--muted);font-size:13px}
+
+/* Notifikasi */
+#toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;background:#0b1626ee;border:2px solid var(--cyan);padding:8px 16px;border-radius:6px;opacity:0;transition:.25s;pointer-events:none}
+#toast.show{opacity:1}
+
+/* Responsif */
+@media (max-width:700px){#chars,.lantern{display:none}}
+@media (max-height:640px){.ver{display:none}.sub{display:none}}
